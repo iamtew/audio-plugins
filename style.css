@@ -1,0 +1,169 @@
+:root {
+  --ink: #111111;
+  --panel: #1a1a1a;
+  --cream: #f4ead0;
+  --metal: #c8d6e5;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--ink);
+  color: var(--cream);
+  font: 18px/1.5 system-ui, sans-serif;
+}
+
+a {
+  color: var(--accent, var(--metal));
+}
+
+a:focus-visible,
+.skip:focus-visible {
+  outline: 2px solid var(--cream);
+  outline-offset: 3px;
+}
+
+.skip {
+  position: absolute;
+  left: 0.75rem;
+  top: -3rem;
+  z-index: 2;
+  padding: 0.35rem 0.7rem;
+  background: var(--panel);
+  color: var(--cream);
+  text-decoration: none;
+}
+
+.skip:focus {
+  top: 0.75rem;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.5rem;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 1.25rem;
+  background: #111111f2;
+  border-bottom: 1px solid #2a2a2a;
+}
+
+.brand {
+  color: var(--cream);
+  font-weight: 650;
+  text-decoration: none;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem 1.1rem;
+}
+
+nav a {
+  color: var(--metal);
+  text-decoration: none;
+}
+
+nav a:hover {
+  color: var(--cream);
+}
+
+main {
+  max-width: 68rem;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 4rem;
+}
+
+.intro h1 {
+  margin: 0 0 0.6rem;
+  font-size: clamp(2rem, 4vw, 2.75rem);
+}
+
+.intro p {
+  max-width: 40rem;
+  margin: 0 0 2.5rem;
+}
+
+.plugin {
+  display: grid;
+  gap: 1.25rem;
+  margin-bottom: 2.5rem;
+  padding: 1.25rem;
+  background: var(--panel);
+  border-left: 4px solid var(--accent);
+}
+
+.plugin h2 {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin: 0 0 0.85rem;
+  color: var(--accent);
+}
+
+.plugin h2 img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  background: #000;
+}
+
+.plugin p { margin: 0 0 0.75rem; }
+
+.meta {
+  color: var(--metal);
+  font-size: 0.95rem;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem 0.85rem;
+  margin-top: 1rem;
+}
+
+.actions a {
+  padding: 0.4rem 0.75rem;
+  border: 1px solid var(--accent);
+  color: var(--cream);
+  text-decoration: none;
+}
+
+.actions a:hover {
+  background: #0006;
+}
+
+.actions .download {
+  background: var(--accent);
+  color: #111;
+  font-weight: 650;
+}
+
+.shot {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid #2a2a2a;
+}
+
+footer {
+  padding: 1.25rem;
+  color: var(--metal);
+  text-align: center;
+  border-top: 1px solid #2a2a2a;
+}
+
+@media (min-width: 48rem) {
+  .plugin {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: start;
+  }
+}
