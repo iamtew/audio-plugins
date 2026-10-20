@@ -18,6 +18,6 @@ Consult each checkout and its GitHub remote for authoritative project details. D
 
 ## Main page
 
-Introduce the collection and give each plugin-TEW03, K1X, 5HKR, and V4JB-a 3-5 sentence blurb. Base every blurb on verified details from that plugin's checkout or GitHub remote; do not infer or invent features. Locate each project's logo in its checkout, include the logo on the main page, and use static asset paths that work on GitHub Pages. Keep plugin names, logos, and links consistent with the authoritative project sources.
+Introduce the collection and give each plugin-TEW03, K1X, 5HKR, V4JB, and F4RT-a 3-5 sentence blurb. Base every blurb on verified details from that plugin's checkout or GitHub remote; do not infer or invent features. Locate each project's logo in its checkout, include the logo on the main page, and use static asset paths that work on GitHub Pages. Keep plugin names, logos, and links consistent with the authoritative project sources.
 
 Page should have section to each plugin that has link to Plugin Website and Plugin Download and also GitHub Repo of Plugin.

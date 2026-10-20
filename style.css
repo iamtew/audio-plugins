@@ -36,6 +36,7 @@ body[data-active="tew03"] { --page-bg: #171400; }
 body[data-active="k1x"]   { --page-bg: #121a28; }
 body[data-active="5hkr"]  { --page-bg: #120a1c; }
 body[data-active="v4jb"]  { --page-bg: #191830; }
+body[data-active="f4rt"]  { --page-bg: #0a1408; }
 
 a { color: var(--accent, var(--metal)); }
 
@@ -164,7 +165,7 @@ footer {
   width: fit-content;
   padding-bottom: 0.08em;
   /* Text gradient runs through all four plugin colors. */
-  background: linear-gradient(90deg, #e8c200, #d94214, #ff00ff, #6fc3b8);
+  background: linear-gradient(90deg, #e8c200, #d94214, #ff00ff, #6fc3b8, #02f53a);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;

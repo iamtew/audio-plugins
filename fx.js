@@ -19,6 +19,7 @@ const C = {
   k1xOrange: 0xd94214, k1xSteel: 0xb8c4d6,
   hkrMagenta: 0xff00ff, hkrCyan: 0x00e0e0,
   v4jbTeal: 0x6fc3b8, v4jbOrange: 0xf0a030, v4jbIndigo: 0x4a3f8f,
+  f4rtGreen: 0x02f53a, f4rtYellow: 0xe4f20f,
 };
 
 const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -98,6 +99,7 @@ async function start() {
     k1x: kickScene(PIXI, glow),
     '5hkr': grooveScene(PIXI),
     v4jb: fogScene(PIXI, glow, w0, h0),
+    f4rt: fartScene(PIXI, glow, w0, h0),
   };
   for (const [key, s] of Object.entries(scenes)) {
     s.root.alpha = key === active ? 1 : 0;
@@ -186,16 +188,16 @@ function wrap(s, w, h, m = 40) {
   if (s.y < -m) s.y += h + 2 * m; else if (s.y > h + m) s.y -= h + 2 * m;
 }
 
-// ---------- Hero: four-color flow field ----------
-// Streaks in all four plugin colors ride a slowly shifting vector field and
+// ---------- Hero: five-color flow field ----------
+// Streaks in all five plugin colors ride a slowly shifting vector field and
 // part around the pointer.
 
 function heroScene(PIXI, glow, w0, h0, n) {
   const root = new PIXI.Container();
-  const colors = [C.tewYellow, C.k1xOrange, C.hkrMagenta, C.v4jbTeal];
+  const colors = [C.tewYellow, C.k1xOrange, C.hkrMagenta, C.v4jbTeal, C.f4rtGreen];
   const ps = [];
   for (let i = 0; i < n; i++) {
-    const s = glowSprite(PIXI, glow, colors[i % 4]);
+    const s = glowSprite(PIXI, glow, colors[i % 5]);
     s.x = rand(0, w0);
     s.y = rand(0, h0);
     // Mostly small streaks, with ~8% big soft bokeh for depth.
@@ -509,6 +511,62 @@ function fogScene(PIXI, glow, w0, h0) {
         bars.rect(x + bw * 0.2, h - bh, bw * 0.6, bh).fill({ color: C.v4jbTeal, alpha: 0.12 });
         bars.rect(x + bw * 0.1, h - bh - 2, bw * 0.8, 3).fill({ color: C.v4jbTeal, alpha: 0.7 });
       }
+    },
+  };
+}
+
+// ---------- F4RT: toxic gas and formants ----------
+// Green/yellow blobs rise like the plugin site's floating logos. Under them a
+// croak wave with three formant peaks wobbles on a slow wet envelope.
+
+function fartScene(PIXI, glow, w0, h0) {
+  const root = new PIXI.Container();
+  const wave = new PIXI.Graphics();
+  wave.blendMode = 'add';
+  root.addChild(wave);
+
+  const blobs = Array.from({ length: 28 }, (_, i) => {
+    const s = glowSprite(PIXI, glow, i % 3 ? C.f4rtGreen : C.f4rtYellow);
+    s.x = rand(0, w0);
+    s.y = rand(0, h0);
+    s.scale.set(rand(2.4, 7));
+    s.alpha = rand(0.08, 0.2);
+    s.vy = rand(-70, -22);
+    s.ph = rand(0, 6.28);
+    root.addChild(s);
+    return s;
+  });
+
+  return {
+    root,
+    update(t, w, h, dt) {
+      for (const s of blobs) {
+        s.y += s.vy * dt;
+        s.x += Math.sin(t * 0.6 + s.ph) * 18 * dt;
+        s.alpha = 0.08 + 0.12 * (0.5 + 0.5 * Math.sin(t * 1.4 + s.ph));
+        if (s.y < -80) {
+          s.y = h + rand(40, 160);
+          s.x = rand(0, w);
+        }
+      }
+
+      wave.clear();
+      const wet = 0.45 + 0.55 * (0.5 + 0.5 * Math.sin(t * 0.35));
+      const amp = h * 0.16 * (0.55 + 0.45 * wet);
+      const cy = h * 0.58;
+      const main = [], echo = [];
+      for (let x = -10; x <= w + 10; x += 5) {
+        const u = (x / w) * 6.28 + t * 1.1;
+        const body = Math.sin(u * 1.4) * 0.35;
+        const f1 = Math.sin(u * 7.2) * Math.exp(-Math.abs(Math.sin(u * 0.5)) * 1.6);
+        const f2 = Math.sin(u * 12.5 + 0.4) * 0.55 * wet;
+        const f3 = Math.sin(u * 18 + t) * 0.28 * wet;
+        const y = cy + amp * (body + f1 + f2 + f3);
+        main.push(x, y);
+        echo.push(x, cy + (y - cy) * 0.55 + amp * 0.12 * Math.sin(u * 3));
+      }
+      glowLine(wave, echo, C.f4rtYellow, 0.7);
+      glowLine(wave, main, C.f4rtGreen, 1 + 0.35 * wet);
     },
   };
 }

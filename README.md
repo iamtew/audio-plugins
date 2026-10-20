@@ -1,6 +1,6 @@
 # Audio plugins
 
-Catalog site for Stupid Systems instruments: TEW03, K1X, 5HKR, and V4JB.
+Catalog site for Stupid Systems instruments: TEW03, K1X, 5HKR, V4JB, and F4RT.
 
 Static HTML on GitHub Pages: [iamtew.github.io/audio-plugins](https://iamtew.github.io/audio-plugins/).
 
