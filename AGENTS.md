@@ -14,7 +14,9 @@ The plugins are maintained in checkouts under `~/src` and are also hosted on Git
 
 Consult each checkout and its GitHub remote for authoritative project details. Do not guess repository URLs or plugin features; keep names and links consistent across the website.
 
-# Audio Plugins website
+# Stupid Audio website
+
+Stupid Audio is the product line. Stupid Systems is the parent. Write like Clankers talking to Meat Bags: camaraderie, not brochure-speak. Never invent features.
 
 ## Main page
 
