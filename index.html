@@ -5,97 +5,115 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Stupid Systems | audio plugins</title>
   <meta name="description" content="TEW03, K1X, 5HKR, and V4JB — MIT VST3 and standalone instruments from Stupid Systems.">
-  <link rel="stylesheet" href="style.css?v=2">
+  <meta name="theme-color" content="#0b0b0f">
+  <link rel="stylesheet" href="style.css?v=3">
+  <!-- fx.js paints the animated PixiJS backdrop. The page is complete without it. -->
+  <script type="module" src="fx.js?v=1"></script>
 </head>
-<body>
+<body data-active="top">
   <a class="skip" href="#main">Skip to content</a>
+
+  <!-- One shared WebGL canvas behind everything; decorative only. -->
+  <canvas id="fx" aria-hidden="true"></canvas>
 
   <header>
     <a class="brand" href="#top">Stupid Systems</a>
     <nav aria-label="Plugins">
-      <a href="#tew03">TEW03</a>
-      <a href="#k1x">K1X</a>
-      <a href="#5hkr">5HKR</a>
-      <a href="#v4jb">V4JB</a>
+      <a href="#tew03" style="--accent: #e8c200;">TEW03</a>
+      <a href="#k1x" style="--accent: #d94214;">K1X</a>
+      <a href="#5hkr" style="--accent: #ff00ff;">5HKR</a>
+      <a href="#v4jb" style="--accent: #6fc3b8;">V4JB</a>
     </nav>
   </header>
 
   <main id="main">
-    <section class="intro" id="top">
+    <section class="intro" id="top" data-scene="top">
+      <p class="kicker">Stupid Systems presents</p>
       <h1>Audio plugins</h1>
-      <p>
+      <p class="lede">
         Four MIT-licensed instruments from Stupid Systems.
         Each one ships as VST3 and standalone.
         This page is the catalog; manuals, demos, and downloads live on each plugin’s own site.
       </p>
+      <ul class="tiles">
+        <li style="--accent: #e8c200;"><a href="#tew03"><img src="assets/tew03-icon.png" alt="" width="96" height="96"><span>TEW03</span></a></li>
+        <li style="--accent: #d94214;"><a href="#k1x"><img src="assets/k1x-logo.png" alt="" width="96" height="96"><span>K1X</span></a></li>
+        <li style="--accent: #ff00ff;"><a href="#5hkr"><img src="assets/5hkr-logo.png" alt="" width="96" height="96"><span>5HKR</span></a></li>
+        <li style="--accent: #6fc3b8;"><a href="#v4jb"><img src="assets/v4jb-logo.png" alt="" width="96" height="96"><span>V4JB</span></a></li>
+      </ul>
     </section>
 
-    <article class="plugin" id="tew03" style="--accent: #e8c200;">
+    <!-- Each plugin: --accent is the brand color, --accent2 the partner color, --bg the page tint. -->
+    <article class="plugin" id="tew03" data-scene="tew03" style="--accent: #e8c200; --accent2: #22b14c; --bg: #171400;">
       <div class="copy">
-        <h2><img src="assets/tew03-icon.png" alt="" width="48" height="48">TEW03</h2>
-        <p>A monophonic acid synth. Classic 303 squelch (saw/square, resonant filter, accent, slide, drive) plus extra nastiness.</p>
+        <img class="logo" src="assets/tew03-icon.png" alt="" width="144" height="144">
+        <h2>TEW03</h2>
+        <p class="tagline">A monophonic acid synth. Classic 303 squelch (saw/square, resonant filter, accent, slide, drive) plus extra nastiness.</p>
         <p>The main page is the synth, a 3×12 step sequencer (16 or 32 steps, accent and slide, key lock), and two drawn LFOs you can drop on any knob. Patterns play the voice and go out as MIDI.</p>
         <p>Run modes: Keyboard (play from MIDI), Standalone (loop the selected slot; the DAW UI hides this), and Pattern (hold a key to trigger a pattern).</p>
         <p>Effects are chorus, compressor, delay, distortion, EQ, filter, flanger, phaser, and reverb — click to add, drag to reorder, all off until you turn them on. A five-band parametric EQ sits before and after the effects, with the spectrum behind the curve.</p>
         <p class="meta">VST3 and standalone.</p>
         <p class="actions">
-          <a href="https://iamtew.github.io/TEW03/">Plugin Website</a>
           <a class="download" href="https://github.com/iamtew/TEW03/releases/latest">Plugin Download</a>
+          <a href="https://iamtew.github.io/TEW03/">Plugin Website</a>
           <a href="https://github.com/iamtew/TEW03">GitHub Repo</a>
         </p>
       </div>
-      <img class="shot" src="assets/tew03-shot.png" alt="TEW03 main page: synth, sequencer, and LFOs">
+      <figure class="frame"><img class="shot" src="assets/tew03-shot.png" alt="TEW03 main page: synth, sequencer, and LFOs" loading="lazy"></figure>
     </article>
 
-    <article class="plugin" id="k1x" style="--accent: #d94214;">
+    <article class="plugin" id="k1x" data-scene="k1x" style="--accent: #d94214; --accent2: #b8c4d6; --bg: #121a28;">
       <div class="copy">
-        <h2><img src="assets/k1x-logo.png" alt="" width="48" height="48">K1X</h2>
-        <p>A kick drum (909 default, plus 808 / 707 / Tight / Hard).</p>
+        <img class="logo" src="assets/k1x-logo.png" alt="" width="144" height="144">
+        <h2>K1X</h2>
+        <p class="tagline">A kick drum (909 default, plus 808 / 707 / Tight / Hard).</p>
         <p>Tune, click, decay, drive, filters, then a parallel FX send (distortion / delay / reverb) and post EQ.</p>
         <p>Length and reverb predelay can snap to the DAW tempo.</p>
         <p>Standalone Play previews the kick. Export WAV writes a stereo shot including the FX tail.</p>
         <p class="meta">VST3 and standalone.</p>
         <p class="actions">
-          <a href="https://iamtew.github.io/K1X/">Plugin Website</a>
           <a class="download" href="https://github.com/iamtew/K1X/releases/latest">Plugin Download</a>
+          <a href="https://iamtew.github.io/K1X/">Plugin Website</a>
           <a href="https://github.com/iamtew/K1X">GitHub Repo</a>
         </p>
       </div>
-      <img class="shot" src="assets/k1x-shot.png" alt="K1X main page: waveform, Style, Length, and kick knobs">
+      <figure class="frame"><img class="shot" src="assets/k1x-shot.png" alt="K1X main page: waveform, Style, Length, and kick knobs" loading="lazy"></figure>
     </article>
 
-    <article class="plugin" id="5hkr" style="--accent: #ff00ff;">
+    <article class="plugin" id="5hkr" data-scene="5hkr" style="--accent: #ff00ff; --accent2: #00e0e0; --bg: #120a1c;">
       <div class="copy">
-        <h2><img src="assets/5hkr-logo.png" alt="" width="48" height="48">5HKR</h2>
-        <p>A perc groove box: eight synth lanes on a 16th-note grid. Not a sample player.</p>
+        <img class="logo" src="assets/5hkr-logo.png" alt="" width="144" height="144">
+        <h2>5HKR</h2>
+        <p class="tagline">A perc groove box: eight synth lanes on a 16th-note grid. Not a sample player.</p>
         <p>Lanes are CHH, OHH, Crash, Cym, Shaker, Clave, Cow, Rim. The kit menu picks 707 / 808 / 909 / Linn for that lane. Pattern banks, per-lane swing and loop length, then a send into delay, reverb, chorus, flanger, and phaser, plus post EQ and a sidechain duck.</p>
         <p>36 factory grooves: bank 1 house/techno, bank 2 latin/afro, bank 3 broken/polyrhythmic.</p>
         <p>Hold MIDI C1 for bank 1 pattern 1 (Ableton C0), like TEW03.</p>
         <p class="meta">VST3 and standalone.</p>
         <p class="actions">
-          <a href="https://iamtew.github.io/5HKR/">Plugin Website</a>
           <a class="download" href="https://github.com/iamtew/5HKR/releases/latest">Plugin Download</a>
+          <a href="https://iamtew.github.io/5HKR/">Plugin Website</a>
           <a href="https://github.com/iamtew/5HKR">GitHub Repo</a>
         </p>
       </div>
-      <img class="shot" src="assets/5hkr-shot.png" alt="5HKR main page: eight lanes and step grid">
+      <figure class="frame"><img class="shot" src="assets/5hkr-shot.png" alt="5HKR main page: eight lanes and step grid" loading="lazy"></figure>
     </article>
 
-    <article class="plugin" id="v4jb" style="--accent: #6fc3b8;">
+    <article class="plugin" id="v4jb" data-scene="v4jb" style="--accent: #6fc3b8; --accent2: #f0a030; --bg: #191830;">
       <div class="copy">
-        <h2><img src="assets/v4jb-logo.png" alt="" width="48" height="48">V4JB</h2>
-        <p>An atmosphere and texture instrument. Pads, drones, air, fog. Sister plugin to TEW03 and K1X.</p>
+        <img class="logo" src="assets/v4jb-logo.png" alt="" width="144" height="144">
+        <h2>V4JB</h2>
+        <p class="tagline">An atmosphere and texture instrument. Pads, drones, air, fog. Sister plugin to TEW03 and K1X.</p>
         <p>A modular additive synth: up to 512 sine partials per voice, 8 voices. A spectral stage feeds swappable spectral modules, then drive, chorus or phaser, delay, and reverb.</p>
         <p>A morph pad blends four macro snapshots by hand, along drawn paths, or as an envelope.</p>
         <p>194 factory presets in 16 categories.</p>
         <p class="meta">VST3 and standalone.</p>
         <p class="actions">
-          <a href="https://iamtew.github.io/V4JB/">Plugin Website</a>
           <a class="download" href="https://github.com/iamtew/V4JB/releases/latest">Plugin Download</a>
+          <a href="https://iamtew.github.io/V4JB/">Plugin Website</a>
           <a href="https://github.com/iamtew/V4JB">GitHub Repo</a>
         </p>
       </div>
-      <img class="shot" src="assets/v4jb-shot.png" alt="V4JB Edit page: spectral stage, modules, effects, and keys">
+      <figure class="frame"><img class="shot" src="assets/v4jb-shot.png" alt="V4JB Edit page: spectral stage, modules, effects, and keys" loading="lazy"></figure>
     </article>
   </main>
 
