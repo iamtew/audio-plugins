@@ -99,6 +99,8 @@ main {
   padding: 1.25rem;
   background: var(--panel);
   border-left: 4px solid var(--accent);
+  /* sticky header covers jump targets without this */
+  scroll-margin-top: 4.5rem;
 }
 
 .plugin h2 {
