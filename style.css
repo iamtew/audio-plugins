@@ -215,7 +215,6 @@ footer {
   height: 96px;
   object-fit: contain;
   border-radius: 0.75rem;
-  background: #000;
 }
 
 /* ---------- Plugin sections ---------- */
@@ -248,11 +247,8 @@ footer {
   height: auto;
   aspect-ratio: 1;
   object-fit: contain;
-  border-radius: 1.25rem;
-  background: #000;
-  box-shadow:
-    0 0 0 2px var(--accent),
-    0 0 40px color-mix(in srgb, var(--accent) 60%, transparent);
+  /* drop-shadow follows PNG alpha; box-shadow would still draw a square plate. */
+  filter: drop-shadow(0 0 18px color-mix(in srgb, var(--accent) 60%, transparent));
 }
 
 .plugin h2 {
