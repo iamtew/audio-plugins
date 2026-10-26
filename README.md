@@ -9,3 +9,5 @@ Each plugin keeps its own site, downloads, and GitHub repo. This hub only lists 
 The animated backdrop (`fx.js`) loads a pinned [PixiJS](https://pixijs.com/) build from jsDelivr. No build step. If the CDN or WebGL is unavailable, or the visitor prefers reduced motion, the page falls back to its CSS gradients (or a still frame).
 
 Preview locally with `python -m http.server`.
+
+After a plugin logo changes in its checkout, run `just logos` here to copy the PNGs into `assets/`.
