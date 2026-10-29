@@ -16,7 +16,7 @@ Consult each checkout and its GitHub remote for authoritative project details. D
 
 # Stupid Audio website
 
-Stupid Audio is the product line. Stupid Systems is the parent. Write like Clankers talking to Meat Bags: camaraderie, not brochure-speak. Never invent features.
+Stupid Audio is the product line. Stupid Systems is the parent. Write direct, not brochure-speak. Do not advertise AI authorship on public pages. Never invent features.
 
 ## Main page
 
